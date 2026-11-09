@@ -1,6 +1,7 @@
 import os
 import torch
 from models import TimeKAN
+from models import MOKAN
 
 
 class Exp_Basic(object):
@@ -8,6 +9,7 @@ class Exp_Basic(object):
         self.args = args
         self.model_dict = {
             'TimeKAN': TimeKAN,
+            'MOKAN': MOKAN,
         }
         self.device = self._acquire_device()
         self.model = self._build_model().to(self.device)
@@ -23,8 +25,8 @@ class Exp_Basic(object):
                 device = torch.device('mps')
                 print('Use MPS')
                 return device
-            os.environ["CUDA_VISIBLE_DEVICES"] = str(
-                self.args.gpu) if not self.args.use_multi_gpu else self.args.devices
+            # Device visibility is configured by the experiment launcher before
+            # CUDA initialization; args.gpu indexes that visible device list.
             device = torch.device('cuda:{}'.format(self.args.gpu))
             if self.args.use_multi_gpu:
                 print('Use GPU: cuda{}'.format(self.args.device_ids))

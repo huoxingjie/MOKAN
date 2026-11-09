@@ -15,15 +15,15 @@ torch.cuda.manual_seed_all(seed)
 torch.backends.cudnn.benchmark = False
 torch.backends.cudnn.deterministic = True
 
-parser = argparse.ArgumentParser(description='TimeKAN')
+parser = argparse.ArgumentParser(description='MOKAN')
 
 # basic config
 parser.add_argument('--task_name', type=str, required=True, default='long_term_forecast',
                     help='task name, options:[long_term_forecast, short_term_forecast, imputation, classification, anomaly_detection]')
 parser.add_argument('--is_training', type=int, required=True, default=1, help='status')
 parser.add_argument('--model_id', type=str, required=True, default='test', help='model id')
-parser.add_argument('--model', type=str, required=True, default='Autoformer',
-                    help='model name, options: [Autoformer, Transformer, TimesNet]')
+parser.add_argument('--model', type=str, required=True, default='MOKAN',
+                    help='model name, options: [TimeKAN, MOKAN]')
 
 # data loader
 parser.add_argument('--data', type=str, required=True, default='ETTm1', help='dataset type')
@@ -73,12 +73,21 @@ parser.add_argument('--down_sampling_layers', type=int, default=0, help='num of 
 parser.add_argument('--down_sampling_window', type=int, default=1, help='down sampling window size')
 parser.add_argument('--use_future_temporal_feature', type=int, default=0,
                     help='whether to use future_temporal_feature; True 1 False 0')
-parser.add_argument('--begin_order', type=int, default=1, help='begin_order')
+parser.add_argument('--feature_switch_threshold', type=int, default=100,
+                    help='MOKAN: use upstream TimeKAN at or below this feature count')
+parser.add_argument('--begin_order', type=int, default=1,
+                    help='MOKAN: first Chebyshev order')
+parser.add_argument('--num_blocks', type=int, default=2,
+                    help='MOKAN: high-dimensional residual blocks')
+parser.add_argument('--level', type=int, default=-6,
+                    help='MOKAN: high-dimensional decomposition level')
+parser.add_argument('--wavelet_name', type=str, default='db1',
+                    help='MOKAN: wavelet family for the high-dimensional path')
 # imputation task
 parser.add_argument('--mask_rate', type=float, default=0.25, help='mask ratio')
 
 # anomaly detection task
-parser.add_argument('--anomaly_ratio', type=float, default=0.25, help='prior anomaly ratio (%)')
+parser.add_argument('--anomaly_ratio', type=float, default=0.25, help='prior anomaly ratio (percent)')
 
 # optimization
 parser.add_argument('--num_workers', type=int, default=10, help='data loader num workers')

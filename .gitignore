@@ -1,0 +1,26 @@
+# Python and editor files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.idea/
+.vscode/
+
+# Local datasets and generated experiment artifacts
+data/
+checkpoints/
+runs/
+tensorboard/
+traffic_results_*/
+*_results_*/
+*_run_*/
+*.log
+*.pth
+*.npz
+*.npy
+
+# Local environment files
+.env
+.venv/
+venv/
+

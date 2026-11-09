@@ -4,7 +4,6 @@ import pandas as pd
 import glob
 import re
 import torch
-from sktime.datasets import load_from_tsfile_to_dataframe
 from torch.utils.data import Dataset
 from sklearn.preprocessing import StandardScaler
 from utils.timefeatures import time_features
