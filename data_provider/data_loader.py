@@ -1,3 +1,7 @@
+# Based on the TimeKAN repository and modified for MOKAN.
+# Original source: https://github.com/huangst21/TimeKAN
+# Original code is licensed under Apache License 2.0; see LICENSE and NOTICE.
+
 import os
 import numpy as np
 import pandas as pd

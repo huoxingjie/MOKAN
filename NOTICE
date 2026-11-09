@@ -1,0 +1,16 @@
+MOKAN includes and extends code from the TimeKAN project:
+
+  TimeKAN: KAN-based Frequency Decomposition Learning Architecture for
+  Long-term Time Series Forecasting
+
+  Original authors: Songtao Huang, Zhen Zhao, Can Li, and Lei Bai
+  Source: https://github.com/huangst21/TimeKAN
+  Paper: https://openreview.net/forum?id=wTLc79YNbh
+
+The original TimeKAN source is distributed under the Apache License, Version
+2.0. The license text is included in LICENSE.
+
+Files from the upstream TimeKAN implementation are retained in this
+repository under data_provider/, exp/, layers/, models/TimeKAN.py, run.py,
+and utils/. The MOKAN project modifies selected files and adds the MOKAN
+extension under models/MOKAN.py and mokan/.

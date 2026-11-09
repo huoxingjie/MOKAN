@@ -1,3 +1,7 @@
+# Based on the TimeKAN repository and modified for MOKAN.
+# Original source: https://github.com/huangst21/TimeKAN
+# Original code is licensed under Apache License 2.0; see LICENSE and NOTICE.
+
 import argparse
 import torch
 from exp.exp_long_term_forecasting import Exp_Long_Term_Forecast
